@@ -13,17 +13,26 @@ import java.net.URL;
 
 @Controller
 public class FestivalAPIController {
-    public static final String DaejeonKey = "5a3e607b685cd79cb54c028b08f26630da1031036743861dab68d94f1bd558e7";
+
+    public static final String ServiceKey = "5a3e607b685cd79cb54c028b08f26630da1031036743861dab68d94f1bd558e7";
 
     @ResponseBody
     public String DaejeonFestival() throws IOException
     {
-        String url = "https://apis.data.go.kr/6300000/openapi2022/festv";
-        url += "?serviceKey=" + DaejeonKey;
-        url += "&pageNo=1";
-        url += "&numOfRows=10";
+        String Daejeonurl = "https://apis.data.go.kr/6300000/openapi2022/festv/getfestv?serviceKey=";
+        Daejeonurl += ServiceKey;
+        Daejeonurl += "&pageNo=1&numOfRows=100";
+        //대전 축제 API url
+        //그와 별개로 축제가 없음
 
-        URL requestUrl = new URL(url);
+        String Busanurl = "http://apis.data.go.kr/6260000/FestivalService/getFestivalKr?serviceKey=";
+        Busanurl += ServiceKey;
+        Busanurl += "&paeNo=1&numOfRows=100&resultType=json";
+
+        String Ulsanurl = "http://apis.data.go.kr/6310000/ulsanfestival/getUlsanfestivalList?serviceKey=";
+        Ulsanurl += ServiceKey;
+
+        URL requestUrl = new URL(Daejeonurl);
         HttpURLConnection urlConn = (HttpURLConnection) requestUrl.openConnection();
         urlConn.setRequestMethod("GET");
         BufferedReader br = new BufferedReader(new InputStreamReader(urlConn.getInputStream()));
