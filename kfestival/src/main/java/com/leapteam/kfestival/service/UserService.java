@@ -4,6 +4,7 @@ import com.leapteam.kfestival.dto.UserDTO;
 import com.leapteam.kfestival.entity.UserEntity;
 import com.leapteam.kfestival.repositiory.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,13 +18,14 @@ public class UserService
 
     public void save(UserDTO userDTO)
     {
-        UserEntity userEntity = UserEntity.toUserEntity(UserDTO);
+        UserEntity userEntity = UserEntity.toUserEntity(userDTO);
         userRepository.save(userEntity);
     }
 
     public UserDTO login(UserDTO userDTO)
     {
-        Optional<UserEntity> byUserEmail = UserRepository.findByUserEmail(userDTO.getUserEmail());
+
+        Optional<UserEntity> byUserEmail = userRepository.findByUserEmail(userDTO.getUserEmail());
         if(byUserEmail.isPresent()) //조회결과 있음
         {
             UserEntity userEntity = byUserEmail.get();

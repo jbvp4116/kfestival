@@ -30,5 +30,7 @@ public class UserDTO { //회원 정보 필드
         userDTO.setUserName(userEntity.getUserName());
         userDTO.setUserNickName(userEntity.getUserNickName());
         userDTO.setUserPhone(userEntity.getUserPhone());
+
+        return userDTO;
     }
 }

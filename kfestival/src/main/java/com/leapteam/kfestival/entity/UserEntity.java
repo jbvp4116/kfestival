@@ -39,5 +39,7 @@ public class UserEntity
         userEntity.setUserName(userDTO.getUserName());
         userEntity.setUserNickName(userDTO.getUserNickName());
         userEntity.setUserPhone(userDTO.getUserPhone());
+
+        return userEntity;
     }
 }
