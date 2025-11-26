@@ -50,7 +50,7 @@ public class UserController
         if (loginResult != null) //로그인 성공
         {
             session.setAttribute("loginEmail", loginResult.getUserEmail());
-            return "main";
+            return "home";
         }
 
         else //로그인 실패

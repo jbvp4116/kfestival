@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    font-family: "Noto Sans KR", sans-serif;
+    background: #f8f8f8;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0B2A6F; /* 메인 CSS 색상 적용 */
+    padding: 15px 40px;
+    color: white;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* PAGE TITLE */
+.page-title {
+    width: 80%;
+    margin: 40px auto 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* TABS */
+.tabs {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tab {
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.active {
+    font-weight: bold;
+    border-bottom: 2px solid #0a1a47;
+}
+
+.write-btn {
+    margin-left: auto;
+    background: #0a1a47;
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* POST CARD */
+.post-card {
+    width: 80%;
+    margin: 20px auto;
+    background: white;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* HEADER */
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-tag {
+    font-size: 14px;
+    background: #ececec;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.profile {
+    width: 20px;
+    height: 20px;
+    background: #d9d9d9;
+    border-radius: 50%;
+}
+
+.writer {
+    font-size: 15px;
+}
+
+/* CONTENT BOX */
+.post-content {
+    width: 100%;
+    height: 140px;
+    background: #e8e8e8;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+/* FOOTER */
+.post-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-footer p {
+    margin: 0;
+}
+
+.post-footer a {
+    font-size: 14px;
+    color: #0a1a47;
+    text-decoration: none;
+    margin-top: 4px;
+}

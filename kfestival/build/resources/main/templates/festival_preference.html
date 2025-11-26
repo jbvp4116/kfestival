@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Festival Guide</title>
+        <link rel="stylesheet" href="css/festival.css">
+
+    <style>
+        /* style.css 내용 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .top-login {
+            text-align: right;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .title {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding: 0 20px 40px 20px;
+        }
+
+        .card {
+            background-color: white;
+            width: 200px;
+            height: 250px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card .tag {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(30, 58, 138, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1e3a8a;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <h1>K-Festival Guide</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Festival</a>
+            <a href="#">Community</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+
+    <!-- Title Section -->
+    <h2 class="title"><b>(이름)</b>님의 축제 취향은?</h2>
+
+    <!-- Card Grid -->
+    <div class="card-container">
+        <div class="card">
+            <img src="img/global.png" alt="">
+            <span class="tag">#글로벌페스티벌</span>
+        </div>
+        <div class="card">
+            <img src="img/activity.png" alt="">
+            <span class="tag">#활동적인</span>
+        </div>
+        <div class="card">
+            <img src="img/photospot.png" alt="">
+            <span class="tag">#사진명소</span>
+        </div>
+        <div class="card">
+            <img src="img/food.png" alt="">
+            <span class="tag">#먹거리</span>
+        </div>
+        <div class="card">
+            <img src="img/nature.png" alt="">
+            <span class="tag">#자연</span>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 K-Festival Guide. All rights reserved.
+    </footer>
+
+</body>
+</html>

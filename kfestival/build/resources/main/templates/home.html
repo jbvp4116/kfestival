@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K-Festival Home</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.banner {
+    width: 70%;       /* 전체 화면 너비 유지 */
+    height: 250px;     /* 세로 크기 키움 */
+    background: #F3F5FF;
+    border-radius: 12px;
+    margin-top: 20px;
+    margin: 20px auto;
+       display: block;   
+}
+.card-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.card {
+    width: 230px;   /* 가로 크기 키움 */
+    height: 200px;  /* 세로 크기 키움 */
+    background-color: #F3F5FF;
+    border-radius: 10px;
+    border: 1px solid #E3E3E3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card .tag {
+    font-size: 14px; 
+    background-color: #0B2A6F;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.main-title {
+    text-align: center;
+    margin: 20px 0 10px 0;
+    font-size: 30px;  /* 기존 16px → 20px로 키움 */
+    font-weight: bold;
+}
+
+.list-title {
+    margin-left: 20px;
+    margin-top: 25px;
+    font-size: 18px;  /* 기존 13px → 18px로 키움 */
+    font-weight: bold;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">K-Festival Guide</div>
+    <a href="home.html">Home</a>
+    <a href="festival.html">Festival</a>
+    <a href="community.html">Community</a>
+    <a href="login.html">Login</a>
+</div>
+
+<div class="container">
+    <div class="banner"></div>
+
+    <div class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <div class="search">🔍 <input type="text" placeholder="검색"></div>
+
+    <div class="main-title">추천 K-Festival</div>
+
+    <div class="list-title">인기 Festival</div>
+    <div class="card-row">
+        <div class="card">
+        </div>
+        <div class="card">
+        </div>
+        <div class="card">
+        </div>
+    </div>
+
+    <div class="list-title">다가오는 Festival</div>
+    <div class="card-row">
+        <div class="card">
+        </div>
+        <div class="card">
+        </div>
+        <div class="card">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

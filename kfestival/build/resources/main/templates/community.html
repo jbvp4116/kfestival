@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community</title>
+<link rel="stylesheet" href="community.css">
+<style>
+/* 게시글 숨김 */
+.post-card { width: 80%; margin: 20px auto; background: white; border: 1px solid #dcdcdc; border-radius: 12px; padding: 20px; }
+.hidden { display: none; }
+
+/* 모달 */
+.modal { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); display:none; justify-content:center; align-items:center; z-index:1000; }
+.modal-content { background:white; padding:20px; border-radius:12px; width:300px; display:flex; flex-direction:column; gap:10px; }
+.modal-content input, .modal-content select, .modal-content textarea { width:100%; padding:8px; border-radius:6px; border:1px solid #ccc; }
+.modal-content button { background:#0B2A6F; color:white; border:none; padding:10px; border-radius:6px; cursor:pointer; }
+.close-btn { align-self:flex-end; cursor:pointer; font-size:18px; }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">K-Festival Guide</div>
+    <a href="home.html">Home</a>
+    <a href="festival.html">Festival</a>
+    <a href="community.html">Community</a>
+    <a href="login.html">Login</a>
+</div>
+
+<div class="page-title">커뮤니티</div>
+
+<div class="tabs">
+    <button class="tab active" data-category="all">전체</button>
+    <button class="tab" data-category="리뷰">리뷰</button>
+    <button class="tab" data-category="Q&A">Q&A</button>
+    <button class="tab" data-category="정보 공유">정보 공유</button>
+    <button class="write-btn">✎ 새 게시글 작성</button>
+</div>
+
+<div id="postContainer">
+    <div class="post-card" data-category="리뷰">
+        <div class="post-header"><span class="category-tag">리뷰</span><div class="profile"></div><span class="writer">허지우</span></div>
+        <div class="post-content">리뷰 게시글 내용</div>
+        <div class="post-footer"><p>댓글 5개</p><a href="#">댓글 보기</a></div>
+    </div>
+    <div class="post-card" data-category="Q&A">
+        <div class="post-header"><span class="category-tag">Q&A</span><div class="profile"></div><span class="writer">한별</span></div>
+        <div class="post-content">Q&A 게시글 내용</div>
+        <div class="post-footer"><p>댓글 5개</p><a href="#">댓글 보기</a></div>
+    </div>
+    <div class="post-card" data-category="정보 공유">
+        <div class="post-header"><span class="category-tag">정보 공유</span><div class="profile"></div><span class="writer">임다빈</span></div>
+        <div class="post-content">정보 공유 게시글 내용</div>
+        <div class="post-footer"><p>댓글 5개</p><a href="#">댓글 보기</a></div>
+    </div>
+</div>
+
+<!-- 모달 -->
+<div id="postModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>새 게시글 작성</h3>
+        <label>카테고리</label>
+        <select id="postCategory">
+            <option value="리뷰">리뷰</option>
+            <option value="Q&A">Q&A</option>
+            <option value="정보 공유">정보 공유</option>
+        </select>
+        <label>작성자</label>
+        <input type="text" id="postWriter" placeholder="작성자 이름">
+        <label>내용</label>
+        <textarea id="postContent" rows="4" placeholder="게시글 내용을 입력하세요"></textarea>
+        <button id="submitPost">작성 완료</button>
+    </div>
+</div>
+
+<script>
+// 탭 필터
+const tabs = document.querySelectorAll('.tab');
+const postContainer = document.getElementById('postContainer');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const category = tab.getAttribute('data-category');
+        document.querySelectorAll('.post-card').forEach(post => {
+            if(category==='all' || post.getAttribute('data-category')===category) post.style.display='block';
+            else post.style.display='none';
+        });
+    });
+});
+
+// 모달
+const modal = document.getElementById('postModal');
+const writeBtn = document.querySelector('.write-btn');
+const closeBtn = modal.querySelector('.close-btn');
+const submitPost = document.getElementById('submitPost');
+
+writeBtn.addEventListener('click', () => modal.style.display='flex');
+closeBtn.addEventListener('click', () => modal.style.display='none');
+window.addEventListener('click', e => { if(e.target===modal) modal.style.display='none'; });
+
+// 게시글 작성
+submitPost.addEventListener('click', () => {
+    const category = document.getElementById('postCategory').value;
+    const writer = document.getElementById('postWriter').value.trim();
+    const content = document.getElementById('postContent').value.trim();
+
+    if(!writer || !content){ alert("작성자와 내용을 입력해주세요."); return; }
+
+    const postCard = document.createElement('div');
+    postCard.classList.add('post-card');
+    postCard.setAttribute('data-category', category);
+    postCard.innerHTML = `
+        <div class="post-header">
+            <span class="category-tag">${category}</span>
+            <div class="profile"></div>
+            <span class="writer">${writer}</span>
+        </div>
+        <div class="post-content">${content}</div>
+        <div class="post-footer"><p>댓글 0개</p><a href="#">댓글 보기</a></div>
+    `;
+    postContainer.appendChild(postCard);
+
+    modal.style.display='none';
+    document.getElementById('postWriter').value='';
+    document.getElementById('postContent').value='';
+
+    // 활성 탭 필터
+    const activeTab = document.querySelector('.tab.active').getAttribute('data-category');
+    document.querySelectorAll('.post-card').forEach(post => {
+        if(activeTab==='all' || post.getAttribute('data-category')===activeTab) post.style.display='block';
+        else post.style.display='none';
+    });
+});
+</script>
+
+</body>
+</html>
