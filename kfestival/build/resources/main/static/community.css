@@ -31,6 +31,32 @@ body {
     font-size: 16px;
 }
 
+.nav-menu li a:hover {
+    text-decoration: underline;
+
+}
+
+/* 기본 링크 색상 */
+.navbar a {
+    color: white; /* 기본 링크 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+/* 링크에 마우스를 올렸을 때 색상 */
+.navbar a:hover {
+    color: white; /* 마우스 hover 시 색상 (하양색) */
+}
+
+/* 링크가 클릭된 상태 */
+.navbar a:active {
+    color: white; /* 클릭 후 색상 (하양색) */
+}
+
+/* 링크가 방문된 후 색상 */
+.navbar a:visited {
+    color: white; /* 방문 후 색상 (하양색) */
+}
+
 /* PAGE TITLE */
 .page-title {
     width: 80%;
