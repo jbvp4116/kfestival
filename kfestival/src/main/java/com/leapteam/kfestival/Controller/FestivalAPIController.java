@@ -27,11 +27,14 @@ public class FestivalAPIController {
 
         String Busanurl = "http://apis.data.go.kr/6260000/FestivalService/getFestivalKr?serviceKey=";
         Busanurl += ServiceKey;
-        Busanurl += "&paeNo=1&numOfRows=100&resultType=json";
+        Busanurl += "&pageNo=1&numOfRows=100&resultType=json";
 
         String Ulsanurl = "http://apis.data.go.kr/6310000/ulsanfestival/getUlsanfestivalList?serviceKey=";
         Ulsanurl += ServiceKey;
 
+        String Sejongurl = "http://apis.data.go.kr/5690000/sjFestival/sj_00000360?serviceKey=";
+        Sejongurl += ServiceKey;
+        Sejongurl += "&padeIndex=1&pageUnit=100";
         URL requestUrl = new URL(Daejeonurl);
         HttpURLConnection urlConn = (HttpURLConnection) requestUrl.openConnection();
         urlConn.setRequestMethod("GET");

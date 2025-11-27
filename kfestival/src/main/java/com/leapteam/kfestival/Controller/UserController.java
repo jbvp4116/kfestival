@@ -18,14 +18,14 @@ public class UserController
     private final UserService userService;
 
     //회원가입 페이지 출력
-    @GetMapping("/register")
+    @GetMapping("/signup")
     public String registForm()
     {
-        return "save";
+        return "signup";
     }
 
     //register 페이지에서 Controller로 param 받아오기
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public String regist(@ModelAttribute UserDTO userDTO)
     {
         //println은 정상 작동 체크용
