@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.leapteam.kfestival.service.FestivalService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -13,26 +14,37 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HomeController
 {
-    @GetMapping("/")
-    public String indexpage()
-    {
+    private final FestivalService festivalService;
+
+    @GetMapping({"/", "/home"})
+    public String homepage(Model model) {
+        List<FestivalEntity> allFestivals = festivalService.loadFestivalData();
+
+        List<FestivalEntity> recommendedFestivals = allFestivals.stream()
+                .limit(3)
+                .toList();
+
+        List<FestivalEntity> upcomingFestivals = allFestivals.stream()
+                .skip(Math.max(0, allFestivals.size() - 3))
+                .toList();
+
+        model.addAttribute("recommendedFestivals", recommendedFestivals);
+        model.addAttribute("upcomingFestivals", upcomingFestivals);
+
         return "home";
     }
 
-    private final FestivalService festivalService;
-
     @GetMapping("/festival")
-    public String showFestivals(Model model)
+    public String showFestivals()
     {
-        List<FestivalEntity> festivals = festivalService.loadFestivalData();
-        model.addAttribute("festivals", festivals);
         return "festival";
     }
 
-    @GetMapping("/home")
-    public String homepage()
-    {
-        return "home";
+    @GetMapping("/festival/{id}")
+    public String festivalDetail(@PathVariable Long id, Model model) {
+        FestivalEntity festival = festivalService.findById(id);
+        model.addAttribute("festival", festival);
+        return "festival";
     }
 
     @GetMapping("/community")

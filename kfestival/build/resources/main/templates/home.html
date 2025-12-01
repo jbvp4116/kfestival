@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,22 +91,22 @@
 
     <div class="list-title">인기 Festival</div>
     <div class="card-row">
-        <div class="card">
-        </div>
-        <div class="card">
-        </div>
-        <div class="card">
-        </div>
+        <a th:each="festival : ${recommendedFestivals}"
+           th:href="@{/festival/{id}(id=${festival.id})}"
+           class="card">
+            <h3 th:text="${festival.festvNm}">Festival Name</h3>
+            <div class="tag" th:text="${festival.festvTpic}">Tag</div>
+        </a>
     </div>
 
     <div class="list-title">다가오는 Festival</div>
     <div class="card-row">
-        <div class="card">
-        </div>
-        <div class="card">
-        </div>
-        <div class="card">
-        </div>
+        <a th:each="festival : ${upcomingFestivals}"
+           th:href="@{/festival/{id}(id=${festival.id})}"
+           class="card">
+            <h3 th:text="${festival.festvNm}">Festival Name</h3>
+            <div class="tag" th:text="${festival.festvTpic}">Tag</div>
+        </a>
     </div>
 </div>
 

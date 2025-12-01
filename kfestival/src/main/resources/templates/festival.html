@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +11,10 @@
      <!-- 네비게이션 -->
     <div class="navbar">
         <div class="logo">K-Festival Guide</div>
-        <a href="home">Home</a>
-        <a href="festival">Festival</a>
-        <a href="community">Community</a>
-        <a href="login">Login</a>
+        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/festival}">Festival</a>
+        <a th:href="@{/community}">Community</a>
+        <a th:href="@{/login}">Login</a>
     </div>
 
     <!-- Festival Main Image -->
@@ -25,6 +25,10 @@
     <!-- Festival Info -->
     <div class="festival-info">
         <h2>축제 소개</h2>
+        <h2 th:text="${festival.festvNm}">이름</h2>
+        <p th:text="${festival.festvSumm}">요약</p>
+        <p th:text="${festival.festvPlcNm}">장소</p>
+        <p th:text="${festival.festvPrid}">기간</p>
         <button class="ticket-btn">🎟 티켓 예매하기</button>
     </div>
 
