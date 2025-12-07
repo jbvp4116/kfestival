@@ -83,6 +83,15 @@ body {
     gap: 10px;
 }
 
+.festival-info2 {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .ticket-btn {
     background: white;
     border: 1px solid #0B2A6F; /* 메인 색상 통일 */

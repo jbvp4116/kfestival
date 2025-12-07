@@ -8,20 +8,32 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FestivalEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String festvNm;
+    private String contentId;
+    private String title;
+
     @Column(length = 1000)
-    private String festvSumm;
-    private String festvTpic;
-    private String festvPrid;
-    private String festvPlcNm;
-    private String festvHostNm;
-    private String festvZip;
-    private String festvAddr;
-    private String festvDtlAddr;
-    private String refadNo;
-    private String hmpgAddr;
+    private String summary;
+
+    private String addr1;
+    private String addr2;
+    private String zipcode;
+    private String category1;
+    private String category2;
+    private String category3;
+    private String imageUrl;
+    private String imageUrl2;
+
+    @Column(length = 1000)
+    private String tel;
+    private String createdTime;
+    private String eventStartDate;
+    private String eventEndDate;
+
+    @Transient
+    private String description;
 }
