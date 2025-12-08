@@ -32,7 +32,12 @@
         <p th:text="${festival.addr1}">주소</p>
         <p th:text="${festival.Tel}">연락처</p>
         <h2>축제 소개</h2>
-        <p th:text="${festival.description}">축제설명</p>
+        <h2>축제 소개</h2>
+        <p th:text="|${festival.title}은(는) ${festival.addr1}에서 진행되는 축제로,
+             ${festival.eventStartDate.substring(0,4)}년 ${festival.eventStartDate.substring(4,6)}월 ${festival.eventStartDate.substring(6,8)}일부터
+             ${festival.eventEndDate.substring(0,4)}년 ${festival.eventEndDate.substring(4,6)}월 ${festival.eventEndDate.substring(6,8)}일까지 열리는 축제입니다.|">
+            축제 소개 문장
+        </p>
         <button class="ticket-btn">🎟 티켓 예매하기</button>
     </div>
 
@@ -52,11 +57,19 @@
     <!-- Program Schedule -->
     <h3 class="program-title">시작일자</h3>
      <div class="festival-info2">
-         <p th:text="${festival.eventStartDate}">기간</p>
+         <p th:text="${#strings.substring(festival.eventStartDate,0,4) + '년 ' +
+               #strings.substring(festival.eventStartDate,4,6) + '월 ' +
+               #strings.substring(festival.eventStartDate,6,8) + '일'}">
+             기간
+         </p>
      </div>
      <h3 class="program-title">종료일자</h3>
      <div class="festival-info2">
-         <p th:text="${festival.eventEndDate}">기간</p>
+         <p th:text="${#strings.substring(festival.eventEndDate,0,4) + '년 ' +
+               #strings.substring(festival.eventEndDate,4,6) + '월 ' +
+               #strings.substring(festival.eventEndDate,6,8) + '일'}">
+             기간
+         </p>
      </div>
          <div class="program-icons">
         <div class="prog-circle"></div>
