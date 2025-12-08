@@ -4,7 +4,7 @@ body {
     background: #f7f7f7;
 }
 
-/* 네비게이션 */
+/* NAVBAR */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -13,37 +13,47 @@ body {
     padding: 15px 40px;
     color: white;
 }
-.navbar .logo {
+
+.logo {
+    font-size: 20px;
     font-weight: bold;
-    margin-right: 40px;
 }
-.navbar a {
-    color: white;
-    margin-right: 25px;
-    text-decoration: none;
-    font-size: 14px;
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
 }
-.navbar a:hover {
-    text-decoration: underline;
-}
-/* 기본 링크 색상 */
+
 .nav-menu li a {
-    color: white; /* 기본 링크 색상 (하양색) */
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-menu li a:hover {
+    text-decoration: underline;
+
+}
+
+/* 기본 링크 색상 */
+.navbar a {
+    color: white; /* 기본 링크 색상 */
     text-decoration: none; /* 밑줄 제거 */
 }
 
 /* 링크에 마우스를 올렸을 때 색상 */
-.nav-menu li a:hover {
+.navbar a:hover {
     color: white; /* 마우스 hover 시 색상 (하양색) */
 }
 
 /* 링크가 클릭된 상태 */
-.nav-menu li a:active {
+.navbar a:active {
     color: white; /* 클릭 후 색상 (하양색) */
 }
 
 /* 링크가 방문된 후 색상 */
-.nav-menu li a:visited {
+.navbar a:visited {
     color: white; /* 방문 후 색상 (하양색) */
 }
 
