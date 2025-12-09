@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>K-Festival Guide</title>
+  <link rel="stylesheet" href="/festival_search.css">
+</head>
+<body>
+
+<!-- 네비게이션 바 -->
+<div class="navbar">
+    <div class="logo">K-Festival Guide</div>
+    <a th:href="home">Home</a>
+    <a th:href="@{/festival_search}">Festival</a>
+    <a th:href="community">Community</a>
+    <a th:href="login">Login</a>
+</div>
+
+
+<!-- 메인 -->
+<main>
+  <h2>축제 찾기</h2>
+
+<div class="search-box">
+    <div class="search-item">
+        <label>위치</label>
+        <select id="locationSelect">
+            <option value="">모든 위치</option>
+            <option value="서울">서울</option>
+            <option value="부산">부산</option>
+            <option value="대구">대구</option>
+            <option value="인천">인천</option>
+            <option value="광주">광주</option>
+            <option value="대전">대전</option>
+            <option value="울산">울산</option>
+            <option value="세종">세종</option>
+            <option value="경기">경기</option>
+            <option value="충청">충청</option>
+            <option value="전라">전라</option>
+            <option value="경상">경상</option>
+            <option value="강원">강원</option>
+            <option value="제주">제주</option>
+        </select>
+    </div>
+
+  <div class="search-item">
+    <label>장르</label>
+    <select id="genreSelect">
+      <option>모든 장르</option>
+      <option>음악</option>
+      <option>푸드</option>
+    </select>
+  </div>
+
+    <div class="search-item">
+        <label>날짜 범위</label>
+        <div class="search-row">
+            <input type="date" id="dateSelect"/>
+            <button type="button" class="search-btn">검색</button>
+        </div>
+    </div>
+</div>
+
+  </div>
+
+  <!-- 검색 결과 제목 -->
+  <div class="result-title">축제 검색결과</div>
+
+<!-- 카드 리스트 -->
+<div class="grid">
+    <a class="card"
+       th:each="festival : ${searchResults}"
+       th:href="@{/festival/{id}(id=${festival.id})}">
+
+        <img th:src="${festival.imageUrl}" style="width:100%; height:120px; object-fit:cover;">
+        <div class="tag" th:text="${festival.title}"></div>
+    </a>
+</div>
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const button = document.querySelector(".search-btn");
+      button.addEventListener("click", searchFestival);
+    });
+
+    function searchFestival() {
+      const location = document.getElementById("locationSelect").value || "";
+      const genre = document.getElementById("genreSelect").value || "";
+      let date = document.getElementById("dateSelect").value;
+
+      if (!date) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        date = `${yyyy}-${mm}-${dd}`;
+      }
+
+      // URL 구성
+      const params = new URLSearchParams();
+      if (location) params.append("location", location);
+      if (genre && genre !== "모든 장르") params.append("genre", genre);
+      if (date) params.append("date", date);
+
+      const url = "/festival_search?" + params.toString();
+      console.log("이동할 URL:", url); // 디버깅용
+      window.location.href = url;
+    }
+</script>
+
+</body>
+</html>

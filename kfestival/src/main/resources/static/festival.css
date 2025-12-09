@@ -1,64 +1,54 @@
 body {
     margin: 0;
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: #f7f7f7;
 }
 
-/* Navbar */
+/* 네비게이션 */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #0B2A6F; /* 메인 CSS 색상 적용 */
-    padding: 15px 40px;
+    padding: 30px 40px;  /* 패딩 값을 늘려서 바의 세로 크기 증가 */
     color: white;
+    font-weight: bold; /* 글꼴 굵게 설정 */
+    height: 15px; /* 네비게이션 바의 높이 설정 */
 }
-.logo {
-    font-size: 20px;
+
+.navbar .logo {
     font-weight: bold;
-}
-
-.nav-menu {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-.nav-menu li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.nav-menu li a:hover {
-    text-decoration: underline;
+    margin-right: 40px;
+        font-size: 30px;  /* 텍스트 크기 증가 */
 
 }
 
-/* 기본 링크 색상 */
 .navbar a {
-    color: white; /* 기본 링크 색상 */
-    text-decoration: none; /* 밑줄 제거 */
+    color: white;
+    margin-right: 25px;
+    text-decoration: none;
+    font-size: 20px; /* 폰트 크기 증가 */
+    font-weight: bold; /* 글꼴 굵게 설정 */
+}
+
+.navbar a:hover {
+    text-decoration: underline;
 }
 
 /* 링크에 마우스를 올렸을 때 색상 */
-.navbar a:hover {
+.nav-menu li a:hover {
     color: white; /* 마우스 hover 시 색상 (하양색) */
 }
 
 /* 링크가 클릭된 상태 */
-.navbar a:active {
+.nav-menu li a:active {
     color: white; /* 클릭 후 색상 (하양색) */
 }
 
 /* 링크가 방문된 후 색상 */
-.navbar a:visited {
+.nav-menu li a:visited {
     color: white; /* 방문 후 색상 (하양색) */
 }
-
-
-
-
 /* Banner */
 .banner {
     margin: 40px auto;
@@ -67,7 +57,7 @@ body {
 
 .banner-box {
     width: 100%;
-    height: 280px;
+    height: 350px;
     background: #F3F5FF; /* 메인 배너 색상과 통일 */
     border-radius: 12px;
 }
@@ -79,15 +69,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.festival-info2 {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
     flex-direction: column;
     gap: 10px;
 }

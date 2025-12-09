@@ -1,6 +1,7 @@
 package com.leapteam.kfestival.controller;
 
 import com.leapteam.kfestival.entity.FestivalEntity;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -55,18 +58,12 @@ public class HomeController
         return "home";
     }
 
-    @GetMapping("/festival")
-    public String showFestivals(Model model)
+    @GetMapping("/festival_search")
+    public String showFestivals(@RequestParam(required = false) String location, @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, Model model)
     {
-        List<FestivalEntity> festivals = festivalService.getAllFestivals();
-
-        List<FestivalEntity> bannerFestivals = festivals.stream()
-                .filter(f -> f.getImageUrl() != null && !f.getImageUrl().isEmpty())
-                .toList();
-
-        model.addAttribute("bannerFestivals", bannerFestivals);
-
-        return "festival";
+        List<FestivalEntity> searchResults = festivalService.search(location, date);
+        model.addAttribute("searchResults", searchResults);
+        return "festival_search";
     }
 
     @GetMapping("/festival/{id}")

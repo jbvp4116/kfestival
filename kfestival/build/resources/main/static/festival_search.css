@@ -1,0 +1,174 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f7f7;
+}
+
+/* 네비게이션 */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0B2A6F; /* 메인 CSS 색상 적용 */
+    padding: 30px 40px;  /* 패딩 값을 늘려서 바의 세로 크기 증가 */
+    color: white;
+    font-weight: bold; /* 글꼴 굵게 설정 */
+    height: 15px; /* 네비게이션 바의 높이 설정 */
+}
+
+.navbar .logo {
+    font-weight: bold;
+    margin-right: 40px;
+        font-size: 30px;  /* 텍스트 크기 증가 */
+
+}
+
+.navbar a {
+    color: white;
+    margin-right: 25px;
+    text-decoration: none;
+    font-size: 20px; /* 폰트 크기 증가 */
+    font-weight: bold; /* 글꼴 굵게 설정 */
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* 링크에 마우스를 올렸을 때 색상 */
+.nav-menu li a:hover {
+    color: white; /* 마우스 hover 시 색상 (하양색) */
+}
+
+/* 링크가 클릭된 상태 */
+.nav-menu li a:active {
+    color: white; /* 클릭 후 색상 (하양색) */
+}
+
+/* 링크가 방문된 후 색상 */
+.nav-menu li a:visited {
+    color: white; /* 방문 후 색상 (하양색) */
+}
+
+/*  메인 영역                     */
+main {
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/*  검색 박스                     */
+.search-box {
+  background-color: #f2f6ff;
+  padding: 25px;
+  border-radius: 10px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.search-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 14px;
+}
+
+select, input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 150px;
+}
+
+/*  검색 결과 카드                 */
+.result-title {
+  font-weight: bold;
+  margin: 20px 0 15px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+    width: 180px; /* 카드의 너비 설정 */
+    height: 180px; /* 카드의 높이를 너비와 동일하게 설정하여 정사각형 형태로 */
+    background: #FAFAFA;
+    border-radius: 10px;
+    border: 1px solid #E3E3E3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 30px; /* 카드 간 간격도 늘리기 */
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding: 0 10px 20px 10px;
+    width: 100%; /* 부모 컨테이너가 화면 전체 너비를 차지하게 설정 */
+    flex-grow: 1; /* 카드가 부모 요소를 채우도록 확장 */
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.tag {
+    position: absolute;
+    bottom: 5px;
+    font-size: 10px;
+    background-color: rgba(11, 42, 111, 0.8);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+/* 검색 박스 영역 한 줄 정렬 */
+.search-box {
+  background-color: #f2f6ff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;         /* 가로 배치 */
+  align-items: flex-end;       /* 아래 정렬 */
+  justify-content: center;
+  gap: 40px;                   /* 항목 간 간격 */
+}
+
+/* 각 검색 항목 */
+.search-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* 한 줄 버튼 영역 */
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* input, select 크기 통일 */
+select, input[type="date"] {
+  width: 160px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+}

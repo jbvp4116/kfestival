@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -73,5 +74,28 @@ public class FestivalService {
     @PostConstruct
     public void init() {
         loadFestivalData(); // 서버 시작 시 데이터 로딩
+    }
+
+    public List<FestivalEntity> search(String location, LocalDate date)
+    {
+        if ((location == null || location.isEmpty()) && date == null)
+        {
+            return festivalRepository.findAll();
+        }
+
+        else if (location == null || location.isEmpty())
+        {
+            return festivalRepository.findBySingleDate(date);
+        }
+
+        else if(location == null)
+        {
+            return festivalRepository.findByAddr1(location);
+        }
+
+        else
+        {
+            return festivalRepository.findByTwoAtt(location, date);
+        }
     }
 }

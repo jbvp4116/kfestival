@@ -12,7 +12,7 @@
     <div class="navbar">
         <div class="logo">K-Festival Guide</div>
         <a th:href="@{/home}">Home</a>
-        <a th:href="@{/festival}">Festival</a>
+        <a th:href="@{/festival_search}">Festival</a>
         <a th:href="@{/community}">Community</a>
         <a th:href="@{/login}">Login</a>
     </div>
@@ -56,7 +56,7 @@
 
     <!-- Program Schedule -->
     <h3 class="program-title">시작일자</h3>
-     <div class="festival-info2">
+     <div class="festival-info">
          <p th:text="${#strings.substring(festival.eventStartDate,0,4) + '년 ' +
                #strings.substring(festival.eventStartDate,4,6) + '월 ' +
                #strings.substring(festival.eventStartDate,6,8) + '일'}">
@@ -64,7 +64,7 @@
          </p>
      </div>
      <h3 class="program-title">종료일자</h3>
-     <div class="festival-info2">
+     <div class="festival-info">
          <p th:text="${#strings.substring(festival.eventEndDate,0,4) + '년 ' +
                #strings.substring(festival.eventEndDate,4,6) + '월 ' +
                #strings.substring(festival.eventEndDate,6,8) + '일'}">
